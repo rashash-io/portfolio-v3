@@ -12,6 +12,7 @@ import Image from "next/image";
 import React from 'react'
 
 const Home = () => {
+  throw Error("still in prog")
   return (
     <div>welcome to next app</div>
   )
