@@ -11,10 +11,19 @@ import Image from "next/image";
 
 import React from 'react'
 
-const Home = () => {
-  throw Error("still in prog")
+async function Home() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/albums')
+  if (!res.ok) throw new Error('Failed to fetch data')
+  const albums = await res.json()
   return (
-    <div>welcome to next app</div>
+    <div>
+      <h1>Albums  </h1>
+      <ul className="flex flex-wrap gap-2">
+        {albums.map((album: { id: number; title: string }) => (
+          <li className="flex m-2 p-2 rounded-xl bg-gray-800 border" key={album.id}>{album.title}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
